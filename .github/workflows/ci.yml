@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Lint action.yml files with actionlint
+        uses: rhysd/actionlint@03d0035246f3e81f36aed592ffb4bebf33a03106 # v1.7.7
+
+      - name: Lint shell scripts with shellcheck
+        run: |
+          sudo apt-get update && sudo apt-get install -y shellcheck
+          find . -type f -name '*.sh' -exec shellcheck --shell=sh --format=tty {} +
+
+      - name: Test local test script
+        run: |
+          ./setup-mdexp/test-install.sh TBD
