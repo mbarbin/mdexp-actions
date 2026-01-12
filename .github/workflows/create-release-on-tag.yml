@@ -1,0 +1,33 @@
+name: Create Release on Tag
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Extract release notes from CHANGES.md
+        id: extract_changes
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          # Remove leading 'v' if present for matching
+          VERSION="${TAG#v}"
+          # Extract the section for this version
+          awk "/^##[ ]*${VERSION//./\\.}/ {flag=1; print; next} /^## / && flag {exit} flag" CHANGES.md > RELEASE_BODY.md
+          # Fallback if nothing found
+          if [ ! -s RELEASE_BODY.md ]; then
+            echo "No changelog entry found for $VERSION" > RELEASE_BODY.md
+          fi
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
+        with:
+          prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') || contains(github.ref, '-rc') }}
+          body_path: RELEASE_BODY.md
