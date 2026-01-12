@@ -1,0 +1,22 @@
+(library
+ (name mdexp_actions_test)
+ (public_name mdexp-actions-test)
+ (inline_tests)
+ (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
+ (libraries print-table)
+ (preprocess
+  (pps ppx_expect)))
+
+; Generate setup_mdexp_doc.md from setup_mdexp_doc.ml
+
+(rule
+ (alias runtest)
+ (action
+  (diff setup_mdexp_doc.md setup_mdexp_doc.md.gen)))
+
+(rule
+ (package mdexp-actions-test)
+ (action
+  (with-stdout-to
+   setup_mdexp_doc.md.gen
+   (run %{bin:mdexp} %{dep:setup_mdexp_doc.ml}))))
