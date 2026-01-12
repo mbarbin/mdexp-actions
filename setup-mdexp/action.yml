@@ -1,0 +1,20 @@
+name: "setup-mdexp"
+description: "Download and set up the mdexp executable from a GitHub release."
+author: "mdexp contributors"
+inputs:
+  mdexp-version:
+    description: "mdexp version to install."
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install mdexp
+      shell: sh
+      run: |
+        "${{ github.action_path }}/install.sh"
+      env:
+        MDEXP_VERSION: ${{ inputs.mdexp-version }}
+        GH_TOKEN: ${{ github.token }}
+branding:
+  icon: "book-open"
+  color: "purple"
