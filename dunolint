@@ -1,0 +1,13 @@
+(lang dunolint 1.0)
+
+(rule
+ (enforce
+  (dune_project
+   (dune_lang_version
+    (greater_than_or_equal_to 3.17)))))
+
+(rule
+ (enforce
+  (dune_project
+   (implicit_transitive_deps
+    (equals false)))))
