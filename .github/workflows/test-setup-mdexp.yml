@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-setup-mdexp:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install mdexp using setup-mdexp action
+        uses: ./setup-mdexp
+        with:
+          mdexp-version: TBD
+
+      - name: Check mdexp version
+        run: mdexp --version
