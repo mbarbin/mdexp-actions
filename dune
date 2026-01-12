@@ -1,0 +1,22 @@
+(library
+ (name mdexp_actions)
+ (public_name mdexp-actions)
+ (inline_tests)
+ (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
+ (libraries print-table)
+ (preprocess
+  (pps ppx_expect)))
+
+; Generate README.md from README.ml using mdexp
+
+(rule
+ (alias runtest)
+ (action
+  (diff README.md README.md.gen)))
+
+(rule
+ (package mdexp-actions)
+ (action
+  (with-stdout-to
+   README.md.gen
+   (run %{bin:mdexp} %{dep:README.ml}))))
