@@ -1,0 +1,37 @@
+name: CRs Workflows
+
+on:
+  pull_request:
+    branches:
+      - "**" # This will match pull requests targeting any branch
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  crs-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install crs
+        uses: mbarbin/crs-actions/setup-crs@v1.0.0-alpha.8
+        with:
+          crs-version: 0.0.20251014
+
+      - name: Install reviewdog
+        uses: reviewdog/action-setup@d8edfce3dd5e1ec6978745e801f9c50b5ef80252 # v1.4.0
+        with:
+          reviewdog_version: v0.20.3
+
+      - name: Comment on CRs in PR
+        uses: mbarbin/crs-actions/comment-crs-in-pr@v1.0.0-alpha.8
+        with:
+          crs-config: .github/crs-config.json
+
+      - name: Summarize CRs in PR
+        uses: mbarbin/crs-actions/summarize-crs-in-pr@v1.0.0-alpha.8
+        with:
+          crs-config: .github/crs-config.json
