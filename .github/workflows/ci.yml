@@ -19,9 +19,12 @@ jobs:
         uses: rhysd/actionlint@03d0035246f3e81f36aed592ffb4bebf33a03106 # v1.7.7
 
       - name: Lint shell scripts with shellcheck
+        shell: bash
         run: |
           sudo apt-get update && sudo apt-get install -y shellcheck
-          find . -type f -name '*.sh' -exec shellcheck --shell=sh --format=tty {} +
+          echo "Shell files to lint:"
+          git ls-files '*.sh'
+          git ls-files -z '*.sh' | xargs -0 --no-run-if-empty shellcheck --shell=sh --format=tty
 
       - name: Test local test script
         run: |
