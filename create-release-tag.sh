@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: MIT
 set -eu
 
+# CR claude: Remove this line after testing shellcheck CI output
+UNUSED_VAR="test shellcheck warning"
+
 usage() {
   echo "Usage: $0 <release-type> <version>"
   echo "  <release-type>: alpha | beta | rc | stable"
