@@ -4,7 +4,7 @@
  (enforce
   (dune_project
    (dune_lang_version
-    (greater_than_or_equal_to 3.17)))))
+    (>= 3.17)))))
 
 (rule
  (enforce
