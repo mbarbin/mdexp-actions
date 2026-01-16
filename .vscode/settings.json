@@ -1,0 +1,27 @@
+{
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "cSpell.words": [
+        "Barbin",
+        "depexts",
+        "docstrings",
+        "dunolint",
+        "endgroup",
+        "endline",
+        "gpatch",
+        "haya14busa",
+        "janestreet",
+        "Mathieu",
+        "mbarbin",
+        "mdexp",
+        "ocamlformat",
+        "odoc",
+        "opam",
+        "ppxlib",
+        "reviewdog",
+        "rhysd",
+        "runtest",
+        "shellcheck",
+        "softprops"
+    ]
+}
