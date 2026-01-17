@@ -27,11 +27,11 @@ jobs:
           reviewdog_version: v0.20.3
 
       - name: Comment on CRs in PR
-        uses: mbarbin/crs-actions/comment-crs-in-pr@7c2005fec8a4e0fb0481e169d90c7dd402bfc580 # v1.0.0-alpha.8
+        uses: mbarbin/crs-actions/comment-crs-in-pr@08e7d52c3ea31954e210a62c6c7105fa4618eb3a # v1.0.0-alpha.9
         with:
           crs-config: .github/crs-config.json
 
       - name: Summarize CRs in PR
-        uses: mbarbin/crs-actions/summarize-crs-in-pr@7c2005fec8a4e0fb0481e169d90c7dd402bfc580 # v1.0.0-alpha.8
+        uses: mbarbin/crs-actions/summarize-crs-in-pr@08e7d52c3ea31954e210a62c6c7105fa4618eb3a # v1.0.0-alpha.9
         with:
           crs-config: .github/crs-config.json
