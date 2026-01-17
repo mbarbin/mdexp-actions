@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup Dune
         # We review and manually update the action's commit used below.
-        uses: mbarbin/setup-dune@da6e0ec79e48dc4653c1e71656c1752532e05e7b # v2.0.0+patched
+        uses: mbarbin/setup-dune@1c4b81012f25bcff3ddc4cb2533cc8066802388f # v2.0.0+patched
         with:
           version: 3.20.2
           steps: install-dune enable-pkg lazy-update-depexts install-gpatch install-depexts
