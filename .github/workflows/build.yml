@@ -25,14 +25,16 @@ jobs:
 
       - name: Install mdexp
         uses: ./setup-mdexp
+        # As of the time of setting up this repo, there isn't any release of mdexp
+        # available yet. We'll update the version below with the first one to use.
         with:
           mdexp-version: TBD
 
       - name: Setup Dune
         # We review and manually update the action's commit used below.
-        uses: mbarbin/setup-dune@1c4b81012f25bcff3ddc4cb2533cc8066802388f # v2.0.0+patched
+        uses: mbarbin/setup-dune@d38f7c80df59974cbe417c7f2a849219d54b4fdf # v2.0.0+patch-3
         with:
-          version: 3.20.2
+          version: "3.21.0"
           steps: install-dune enable-pkg lazy-update-depexts install-gpatch install-depexts
 
       - name: Build & Run tests
