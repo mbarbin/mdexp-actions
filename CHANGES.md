@@ -1,4 +1,4 @@
-## 1.0.0-alpha.1 (unreleased)
+## 1.0.0-alpha.1 (2026-03-15)
 
 ### Added
 
