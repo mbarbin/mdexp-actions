@@ -113,8 +113,8 @@ let%expect_test "platforms table" =
 
 The `setup-mdexp` action:
 
-1. Downloads the correct binary for the runner's OS and architecture (prefers compressed archives, falls back to raw binary)
-2. Verifies binary integrity via SHA256 digest
+1. Downloads the compressed archive for the runner's OS and architecture
+2. Extracts the binary and verifies its integrity via SHA256 digest
 3. Verifies build attestation using `gh` CLI
 4. Installs the binary to a temporary directory
 5. Adds the directory to `PATH` for subsequent steps
