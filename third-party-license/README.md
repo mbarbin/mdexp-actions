@@ -41,15 +41,6 @@ See the [actions/checkout license](https://github.com/actions/checkout/blob/main
 
 ---
 
-## rhysd/actionlint
-
-- Repository: https://github.com/rhysd/actionlint
-- License: MIT License
-
-See the [actionlint license](https://github.com/rhysd/actionlint/blob/main/LICENSE) for full details.
-
----
-
 ## ocaml-dune/setup-dune
 
 - Repository: https://github.com/ocaml-dune/setup-dune
@@ -96,37 +87,6 @@ See the [dunolint-actions license](https://github.com/mbarbin/dunolint-actions/b
 
 ---
 
-## reviewdog
-
-- Repository: https://github.com/reviewdog/reviewdog
-- License: MIT License
-
-```text
-MIT License
-
-Copyright (c) 2016 haya14busa
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
 ## crs (Code Review System)
 
 - Repository: https://github.com/mbarbin/crs
@@ -162,20 +122,3 @@ and the LGPL-3.0 Linking Exception along with this library. If not, see
 
 See the [crs-actions license](https://github.com/mbarbin/crs-actions/blob/main/LICENSE) for full details.
 
----
-
-## reviewdog/action-setup
-
-- Repository: https://github.com/reviewdog/action-setup
-- License: MIT License
-
-See the [reviewdog/action-setup license](https://github.com/reviewdog/action-setup/blob/main/LICENSE) for full details.
-
----
-
-## softprops/action-gh-release
-
-- Repository: https://github.com/softprops/action-gh-release
-- License: MIT License
-
-See the [action-gh-release license](https://github.com/softprops/action-gh-release/blob/master/LICENSE) for full details.
