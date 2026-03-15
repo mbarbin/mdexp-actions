@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install mdexp
         uses: ./setup-mdexp
@@ -29,10 +29,11 @@ jobs:
         # available yet. We'll update the version below with the first one to use.
         with:
           mdexp-version: TBD
+          mdexp-digest: sha256:TBD
 
       - name: Setup Dune
         # We review and manually update the action's commit used below.
-        uses: mbarbin/setup-dune@d38f7c80df59974cbe417c7f2a849219d54b4fdf # v2.0.0+patch-3
+        uses: mbarbin/setup-dune@ae2985bcdedc6fb24e5743d6f9dace9cf262b41c # v2.0.0+patch-4
         with:
           version: "3.21.0"
           steps: install-dune enable-pkg lazy-update-depexts install-gpatch install-depexts

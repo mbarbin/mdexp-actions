@@ -6,7 +6,7 @@ This project uses the following third-party tools:
 
 ## mdexp
 
-- Repository: https://github.com/mbarbin/ocaml-mdexp
+- Repository: https://github.com/mbarbin/mdexp
 - License: LGPL-3.0-or-later WITH LGPL-3.0-linking-exception
 
 This project uses the `mdexp` tool as an external binary.

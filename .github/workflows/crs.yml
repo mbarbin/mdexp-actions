@@ -9,29 +9,24 @@ permissions:
   contents: read
   pull-requests: write
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   crs-workflows:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install crs
-        uses: mbarbin/crs-actions/setup-crs@08e7d52c3ea31954e210a62c6c7105fa4618eb3a # v1.0.0-alpha.9
+        uses: mbarbin/crs-actions/setup-crs@1496bc422fe27b357d6354ab494e922f6a2b061f # v1.0.0-alpha.13
         with:
-          crs-version: 0.0.20251014
-
-      - name: Install reviewdog
-        uses: reviewdog/action-setup@d8edfce3dd5e1ec6978745e801f9c50b5ef80252 # v1.4.0
-        with:
-          reviewdog_version: v0.20.3
-
-      - name: Comment on CRs in PR
-        uses: mbarbin/crs-actions/comment-crs-in-pr@08e7d52c3ea31954e210a62c6c7105fa4618eb3a # v1.0.0-alpha.9
-        with:
-          crs-config: .github/crs-config.json
+          crs-version: 0.0.20260307
+          crs-digest: sha256:5097e709386d8d41351a87f86c8ad374db72aabe4ddc2a8ff2d58faebb1b889f
 
       - name: Summarize CRs in PR
-        uses: mbarbin/crs-actions/summarize-crs-in-pr@08e7d52c3ea31954e210a62c6c7105fa4618eb3a # v1.0.0-alpha.9
+        uses: mbarbin/crs-actions/summarize-crs-in-pr@1496bc422fe27b357d6354ab494e922f6a2b061f # v1.0.0-alpha.13
         with:
           crs-config: .github/crs-config.json

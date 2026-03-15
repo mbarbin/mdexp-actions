@@ -1,5 +1,5 @@
 (library
- (name mdexp_root)
+ (name mdexp_setup_mdexp)
  (package mdexp-actions)
  (inline_tests)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
@@ -7,16 +7,16 @@
  (preprocess
   (pps ppx_expect)))
 
-; Generate README.md from README.ml using mdexp
+; Generate DIGESTS.md from digests.ml using mdexp
 
 (rule
  (alias runtest)
  (action
-  (diff README.md README.md.gen)))
+  (diff DIGESTS.md DIGESTS.md.gen)))
 
 (rule
  (package mdexp-actions)
  (action
   (with-stdout-to
-   README.md.gen
-   (run %{bin:mdexp} pp %{dep:README.ml}))))
+   DIGESTS.md.gen
+   (run %{bin:mdexp} pp %{dep:digests.ml}))))

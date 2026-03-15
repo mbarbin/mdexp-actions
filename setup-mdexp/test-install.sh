@@ -3,18 +3,21 @@
 # SPDX-License-Identifier: MIT
 set -eu
 
-# Usage: ./test-install.sh <version>
-if [ $# -ne 1 ]; then
-  echo "Usage: $0 <mdexp-version>" >&2
+# Usage: ./test-install.sh <version> <digest>
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <mdexp-version> <mdexp-digest>" >&2
   exit 1
 fi
 
 BINARY="mdexp"
 MDEXP_VERSION="$1"
+MDEXP_DIGEST="$2"
 FAKE_TMPDIR="$(mktemp -d)"
+trap 'rm -rf "${FAKE_TMPDIR}"' EXIT
 
 # Set up fake GitHub Actions environment variables
 export MDEXP_VERSION
+export MDEXP_DIGEST
 export RUNNER_TEMP="${FAKE_TMPDIR}"
 export RUNNER_OS="Linux"
 export GITHUB_PATH="${FAKE_TMPDIR}/github_path.txt"
@@ -43,6 +46,3 @@ if [ -f "${FAKE_TMPDIR}/github_path.txt" ]; then
   echo "GITHUB_PATH contents:"
   cat "${FAKE_TMPDIR}/github_path.txt"
 fi
-
-# Cleanup tempdir on exit
-trap 'rm -rf "${FAKE_TMPDIR}"' EXIT

@@ -1,6 +1,6 @@
 # mdexp-actions-test
 
-This is a standalone OCaml project that uses [mdexp](https://github.com/mbarbin/ocaml-mdexp) to generate documentation from source code.
+This is a standalone OCaml project that uses [mdexp](https://github.com/mbarbin/mdexp) to generate documentation from source code.
 
 ## Purpose
 

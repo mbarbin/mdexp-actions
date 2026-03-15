@@ -6,20 +6,79 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  test-setup-mdexp:
+  test-setup-mdexp-archive:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            mdexp-digest: sha256:TBD
+          - os: macos-latest
+            mdexp-digest: sha256:TBD
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install mdexp using setup-mdexp action (archive)
+        uses: ./setup-mdexp
+        with:
+          mdexp-version: TBD
+          mdexp-digest: ${{ matrix.mdexp-digest }}
+
+      - name: Check mdexp version
+        run: mdexp --version
+
+  test-setup-mdexp-raw-binary:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            mdexp-digest: sha256:TBD
+          - os: macos-latest
+            mdexp-digest: sha256:TBD
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install mdexp using setup-mdexp action (raw binary fallback)
+        uses: ./setup-mdexp
+        with:
+          mdexp-version: TBD
+          mdexp-digest: ${{ matrix.mdexp-digest }}
+
+      - name: Check mdexp version
+        run: mdexp --version
+
+  test-digest-mismatch:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Install mdexp using setup-mdexp action
+      - name: Install mdexp with wrong digest (should fail)
+        id: test-mismatch
+        continue-on-error: true
         uses: ./setup-mdexp
         with:
           mdexp-version: TBD
+          mdexp-digest: sha256:0000000000000000000000000000000000000000000000000000000000000000
 
-      - name: Check mdexp version
-        run: mdexp --version
+      - name: Verify digest mismatch was detected
+        run: |
+          if [ "${{ steps.test-mismatch.outcome }}" != "failure" ]; then
+            echo "Expected failure but got: ${{ steps.test-mismatch.outcome }}"
+            exit 1
+          fi
+          echo "Digest mismatch correctly detected"

@@ -5,6 +5,9 @@ inputs:
   mdexp-version:
     description: "mdexp version to install."
     required: true
+  mdexp-digest:
+    description: "Expected digest of the binary for integrity verification (e.g., sha256:abc123...). The action will fail if the downloaded binary does not match."
+    required: true
 runs:
   using: "composite"
   steps:
@@ -14,6 +17,7 @@ runs:
         "${{ github.action_path }}/install.sh"
       env:
         MDEXP_VERSION: ${{ inputs.mdexp-version }}
+        MDEXP_DIGEST: ${{ inputs.mdexp-digest }}
         GH_TOKEN: ${{ github.token }}
 branding:
   icon: "book-open"

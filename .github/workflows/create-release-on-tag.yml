@@ -8,26 +8,18 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      - name: Extract release notes from CHANGES.md
-        id: extract_changes
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          # Remove leading 'v' if present for matching
-          VERSION="${TAG#v}"
-          # Extract the section for this version
-          awk "/^##[ ]*${VERSION//./\\.}/ {flag=1; print; next} /^## / && flag {exit} flag" CHANGES.md > RELEASE_BODY.md
-          # Fallback if nothing found
-          if [ ! -s RELEASE_BODY.md ]; then
-            echo "No changelog entry found for $VERSION" > RELEASE_BODY.md
-          fi
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
-        with:
-          prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') || contains(github.ref, '-rc') }}
-          body_path: RELEASE_BODY.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: script/create-release.sh

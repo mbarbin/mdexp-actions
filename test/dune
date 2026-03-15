@@ -1,6 +1,6 @@
 (library
  (name mdexp_actions_test)
- (public_name mdexp-actions-test)
+ (package mdexp-actions-test)
  (inline_tests)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
  (libraries print-table)
@@ -19,4 +19,4 @@
  (action
   (with-stdout-to
    setup_mdexp_doc.md.gen
-   (run %{bin:mdexp} %{dep:setup_mdexp_doc.ml}))))
+   (run %{bin:mdexp} pp %{dep:setup_mdexp_doc.ml}))))

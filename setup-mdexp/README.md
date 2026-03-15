@@ -1,6 +1,6 @@
 # setup-mdexp
 
-A reusable GitHub Action to download and install the [mdexp](https://github.com/mbarbin/ocaml-mdexp) literate programming tool from a GitHub release.
+A reusable GitHub Action to download and install the [mdexp](https://github.com/mbarbin/mdexp) literate programming tool from a GitHub release.
 
 ## Usage
 
@@ -8,9 +8,11 @@ A reusable GitHub Action to download and install the [mdexp](https://github.com/
 - uses: mbarbin/mdexp-actions/setup-mdexp@<ref>
   with:
     mdexp-version: 0.0.20260403
+    mdexp-digest: sha256:abc123...
 ```
 
 - The `mdexp-version` input is required and must match a published release of mdexp.
+- The `mdexp-digest` input is required and must be the SHA256 digest of the binary for integrity verification. See [DIGESTS.md](DIGESTS.md) for known digests.
 - The action will install the `mdexp` binary and add it to the `PATH` for subsequent steps.
 
 ### Compatibility Note
@@ -24,7 +26,9 @@ Each version of the actions defined in this repository is tested and blessed for
 ## Features
 
 - Downloads the correct binary for the runner OS and architecture.
-- Verifies the build attestation (if `gh` CLI is available).
+- Prefers compressed archives when available, falls back to raw binary.
+- Verifies binary integrity via SHA256 digest.
+- Verifies the build attestation using `gh` CLI.
 - Installs to a temporary directory and updates the `PATH`.
 
 ## License

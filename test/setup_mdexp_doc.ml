@@ -5,6 +5,7 @@
 (*********************************************************************************)
 
 (* @mdexp
+
 # mdexp-actions Test
 
 This file demonstrates the use of mdexp with print-table to generate
@@ -12,8 +13,7 @@ documentation tables that stay in sync with the code.
 
 ## GitHub Actions Status
 
-A table showing the actions available in this repository:
-@mdexp.end *)
+A table showing the actions available in this repository: *)
 
 module Action = struct
   type t = Setup_mdexp
@@ -56,10 +56,10 @@ let%expect_test "actions table" =
 ;;
 
 (* @mdexp
+
 ## Supported Platforms
 
-The setup-mdexp action supports the following platforms:
-@mdexp.end *)
+The setup-mdexp action supports the following platforms: *)
 
 module Platform = struct
   type t =
@@ -108,14 +108,15 @@ let%expect_test "platforms table" =
 ;;
 
 (* @mdexp
+
 ## How It Works
 
 The `setup-mdexp` action:
 
-1. Downloads the correct binary for the runner's OS and architecture
-2. Verifies build attestation (if `gh` CLI is available)
-3. Installs the binary to a temporary directory
-4. Adds the directory to `PATH` for subsequent steps
+1. Downloads the correct binary for the runner's OS and architecture (prefers compressed archives, falls back to raw binary)
+2. Verifies binary integrity via SHA256 digest
+3. Verifies build attestation using `gh` CLI
+4. Installs the binary to a temporary directory
+5. Adds the directory to `PATH` for subsequent steps
 
-See the [setup-mdexp README](../setup-mdexp/README.md) for usage details.
-@mdexp.end *)
+See the [setup-mdexp README](../setup-mdexp/README.md) for usage details. *)

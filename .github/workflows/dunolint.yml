@@ -11,22 +11,27 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   dunolint-workflows:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install dunolint
-        uses: mbarbin/dunolint-actions/setup-dunolint@2ba7453b5904f39688a3e656c770a5b9727163d0 # v1.0.0-alpha.3
+        uses: mbarbin/dunolint-actions/setup-dunolint@ddc2b3ee5e8e5558d74c68643c63d37c11eb7279 # v1.0.0-alpha.6
         with:
-          dunolint-version: 0.0.20260103
+          dunolint-version: 0.0.20260306
+          dunolint-digest: sha256:b83c07dd352cd4bec36b872ac593f299972710baff70a62e7a4650e80d2460d4
 
       - name: Lint Check (root)
-        uses: mbarbin/dunolint-actions/lint-check@2ba7453b5904f39688a3e656c770a5b9727163d0 # v1.0.0-alpha.3
+        uses: mbarbin/dunolint-actions/lint-check@ddc2b3ee5e8e5558d74c68643c63d37c11eb7279 # v1.0.0-alpha.6
 
       - name: Lint Check (test)
-        uses: mbarbin/dunolint-actions/lint-check@2ba7453b5904f39688a3e656c770a5b9727163d0 # v1.0.0-alpha.3
+        uses: mbarbin/dunolint-actions/lint-check@ddc2b3ee5e8e5558d74c68643c63d37c11eb7279 # v1.0.0-alpha.6
         with:
           workspace-root: ./test
