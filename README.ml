@@ -33,8 +33,8 @@ module Compatibility = struct
   let rows : Row.t list =
     [ { action_version = "v1.0.0-alpha.1"
       ; cli_version = "0.0.20260315"
-      ; status = "Latest"
-      ; note = "initial release"
+      ; status = "✅"
+      ; note = "latest, recommended"
       }
     ]
   ;;
@@ -57,9 +57,9 @@ let%expect_test "compatibility table" =
   (* @mdexp.snapshot *)
   [%expect
     {|
-    | Action Version | CLI mdexp Version | Status | Note            |
-    |:--------------:|:-----------------:|:------:|:----------------|
-    | v1.0.0-alpha.1 |   0.0.20260315    | Latest | initial release |
+    | Action Version | CLI mdexp Version | Status | Note                |
+    |:--------------:|:-----------------:|:------:|:--------------------|
+    | v1.0.0-alpha.1 |   0.0.20260315    |  ✅   | latest, recommended |
     |}]
 ;;
 
