@@ -15,7 +15,11 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            mdexp-digest: sha256:f4fc53bcaa50c9dd979b968804c38322b9b7e6aa699d9d6d2d1f101965332018
+          - os: macos-latest
+            mdexp-digest: sha256:ad06ebd65e133d516425c4dfd08fcb657eb78dce494897b0e47319a072b06e40
 
     runs-on: ${{ matrix.os }}
 
@@ -25,11 +29,9 @@ jobs:
 
       - name: Install mdexp
         uses: ./setup-mdexp
-        # As of the time of setting up this repo, there isn't any release of mdexp
-        # available yet. We'll update the version below with the first one to use.
         with:
-          mdexp-version: TBD
-          mdexp-digest: sha256:TBD
+          mdexp-version: 0.0.20260315
+          mdexp-digest: ${{ matrix.mdexp-digest }}
 
       - name: Setup Dune
         # We review and manually update the action's commit used below.
