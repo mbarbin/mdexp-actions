@@ -22,7 +22,7 @@
   (ocaml
    (>= 5.2))
   (ocamlformat
-   (= 0.28.1))
+   (= 0.29.0))
   (ppx_expect
    (and
     (>= v0.17)
