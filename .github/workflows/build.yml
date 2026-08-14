@@ -37,9 +37,15 @@ jobs:
 
       - name: Setup Dune
         # We review and manually update the action's commit used below.
-        uses: mbarbin/setup-dune@ae2985bcdedc6fb24e5743d6f9dace9cf262b41c # v2.0.0+patch-4
+        uses: mbarbin/setup-dune@03ede0220d3fe665f250727d8e21b7c0f9517f3b # v2.0.0+patch-7
+        env:
+          GH_TOKEN: ${{ github.token }}
         with:
-          version: "3.21.0"
+          version: "3.24.2"
+          dune-digest: "sha256:3a9cac891f0b6086bfbf58d16c6c17ddfd1d493e031b6b43901f585a7f6899c7"
+          workspace: "dune-workspace"
+          cache-prefix: "build"
+          cache-readonly: ${{ github.ref != 'refs/heads/main' }}
           steps: install-dune enable-pkg lazy-update-depexts install-gpatch install-depexts
 
       - name: Build & Run tests
