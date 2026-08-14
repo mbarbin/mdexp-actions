@@ -35,7 +35,11 @@ module Digest_entry = struct
 end
 
 let digests : Digest_entry.t list =
-  [ { version = "0.0.20260315"
+  [ { version = "0.0.20260814"
+    ; platform = Linux_x86_64
+    ; digest = "sha256:47e5646b2cd5bc802bfb776b1a110708195209ffbb6d9d2c274e368467842c15"
+    }
+  ; { version = "0.0.20260315"
     ; platform = Linux_x86_64
     ; digest = "sha256:f4fc53bcaa50c9dd979b968804c38322b9b7e6aa699d9d6d2d1f101965332018"
     }
@@ -64,6 +68,7 @@ let%expect_test "digests table" =
     {|
     |                                  Version                                   |   Platform   | Digest                                                                    |
     |:--------------------------------------------------------------------------:|:------------:|:--------------------------------------------------------------------------|
+    | [0.0.20260814](https://github.com/mbarbin/mdexp/releases/tag/0.0.20260814) | linux-x86_64 | `sha256:47e5646b2cd5bc802bfb776b1a110708195209ffbb6d9d2c274e368467842c15` |
     | [0.0.20260315](https://github.com/mbarbin/mdexp/releases/tag/0.0.20260315) | linux-x86_64 | `sha256:f4fc53bcaa50c9dd979b968804c38322b9b7e6aa699d9d6d2d1f101965332018` |
     |}]
 ;;
