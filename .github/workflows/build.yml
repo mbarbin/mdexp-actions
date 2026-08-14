@@ -17,9 +17,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
+            dune-version: "3.24.2"
+            dune-digest: "sha256:3a9cac891f0b6086bfbf58d16c6c17ddfd1d493e031b6b43901f585a7f6899c7"
             mdexp-version: 0.0.20260814
             mdexp-digest: sha256:47e5646b2cd5bc802bfb776b1a110708195209ffbb6d9d2c274e368467842c15
           - os: macos-latest
+            dune-version: "3.24.2"
+            dune-digest: "sha256:d4aa0d58370bb86e1f3f74635d9f7b69fd635fefe159173add82e851e85d12b2"
             mdexp-version: 0.0.20260814
             mdexp-digest: sha256:facb30ccd73698cf52f07a8c3807cefe0b759022c99ebc86d6b13bb4288ce830
 
@@ -41,8 +45,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         with:
-          version: "3.24.2"
-          dune-digest: "sha256:3a9cac891f0b6086bfbf58d16c6c17ddfd1d493e031b6b43901f585a7f6899c7"
+          version: "${{ matrix.dune-version }}"
+          dune-digest: "${{ matrix.dune-digest }}"
           workspace: "dune-workspace"
           cache-prefix: "build"
           cache-readonly: ${{ github.ref != 'refs/heads/main' }}
