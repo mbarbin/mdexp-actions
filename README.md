@@ -14,7 +14,8 @@ Reusable GitHub Actions for the [mdexp](https://github.com/mbarbin/mdexp) litera
 
 | Action Version | CLI mdexp Version | Status | Note                |
 |:--------------:|:-----------------:|:------:|:--------------------|
-| v1.0.0-alpha.1 |   0.0.20260315    |  ✅   | latest, recommended |
+| v1.0.0-alpha.1 |   0.0.20260814    |  ✅   | latest, recommended |
+| v1.0.0-alpha.1 |   0.0.20260315    |  🟢  | also supported      |
 
 _This table will be updated as new versions are released._
 
